@@ -3,7 +3,7 @@ const env = require('../.env')
 var port = '' 
 
 if(env.ambient == 'prod'){
-    port = 3018
+    port = 3025
 } else if(env.ambient == 'dev') {
     port = 3003
 }

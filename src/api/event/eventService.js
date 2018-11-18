@@ -38,7 +38,7 @@ const update = (req, res, next) => {
 const remove = (req, res, next) => {
 
     let _id = req.params.id;
-    
+
     event.deleteOne({ _id }, (err, obj) => {
         if (err) {
             sendErrorsFromDB(res, err)
@@ -50,12 +50,29 @@ const remove = (req, res, next) => {
 
 
 const getAll = (req, res, next) => {
-    event.find()
+    let { schedule, room } = req.query
+    let find = {}
+
+    if (room) {
+        room = { "$regex": room ? room : '', "$options": "i" }
+        find.room = room
+    }
+    
+    if (schedule) {
+        const scheduleMin = new Date(`${schedule}T00:00:00.000Z`)
+        const scheduleMax = new Date(`${schedule}T23:59:59.999Z`)
+
+        schedule = schedule && { $gt: scheduleMin, $lt: scheduleMax }
+        find.schedule = schedule
+    }
+
+    event.find(req.query ? find : {})
+        .sort({ schedule: -1 })
         .exec((err, obj) => {
             if (err) {
                 sendErrorsFromDB(res, err)
             } else {
-                return res.send(obj)
+                return res.send({ status: 'ok', data: obj })
             }
         })
 }

@@ -10,7 +10,8 @@ const event = new mongoose.Schema({
     asset: { type: String },
     schedule: { type: Date, default: Date.now },
     room: {
-        type: String, enum: ['Pátio do IFG',
+        type: String, enum: [
+            'Pátio do IFG',
             'Teatro do IFG',
             'Mini Auditório Demartin Bezerra',
             'Sala 1 (Cinemateca)',
@@ -23,7 +24,8 @@ const event = new mongoose.Schema({
             'Laboratório 2 (S-401B)',
             'Laboratório 3 (S-401C)',
             'Laboratório 4 (S-309)',
-            'Laboratório 5 (S-310'], required: true
+            'Laboratório 5 (S-310'
+        ], required: true
     },
     createAt: { type: Date, default: Date.now }
 })

@@ -15,6 +15,8 @@ module.exports = function (server) {
     const openApi = express.Router()
     server.use('/', openApi)
     openApi.post('/event', event.create)
+    openApi.put('/event/:id', event.update)
+    openApi.delete('/event/:id', event.remove)
     openApi.get('/event', event.getAll)
     openApi.post('/comment', comment.create)
     openApi.get('/comment', comment.getAll)

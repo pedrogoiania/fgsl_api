@@ -22,16 +22,42 @@ const create = (req, res, next) => {
         }
     })
 }
+const update = (req, res, next) => {
 
-const getAll = (req, res, next) => {
-    event.find()
-    .exec((err, obj) => {
+    let _id = req.params.id;
+    let document = req.body
+
+    event.findByIdAndUpdate({ _id }, document, { new: true }, (err, obj) => {
         if (err) {
             sendErrorsFromDB(res, err)
         } else {
-            return res.send(obj)
+            return res.send({ status: 'ok', data: obj })
+        }
+    })
+}
+const remove = (req, res, next) => {
+
+    let _id = req.params.id;
+    
+    event.deleteOne({ _id }, (err, obj) => {
+        if (err) {
+            sendErrorsFromDB(res, err)
+        } else {
+            return res.send({ status: 'ok', data: obj })
         }
     })
 }
 
-module.exports = { create, getAll }
+
+const getAll = (req, res, next) => {
+    event.find()
+        .exec((err, obj) => {
+            if (err) {
+                sendErrorsFromDB(res, err)
+            } else {
+                return res.send(obj)
+            }
+        })
+}
+
+module.exports = { create, getAll, update, remove }

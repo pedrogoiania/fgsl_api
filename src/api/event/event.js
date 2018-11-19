@@ -17,14 +17,14 @@ const event = new mongoose.Schema({
             'Sala 1 (Cinemateca)',
             'Sala 2 (Auditório Julieta Passos)',
             'Sala 3 (Auditório Djalma Araújo)',
-            'Sala 4 (S-306), ',
+            'Sala 4 (S-306)',
             'LPIC (S-308)',
             'CTF (S-301)',
             'Laboratório 1 (S-401A)',
             'Laboratório 2 (S-401B)',
             'Laboratório 3 (S-401C)',
             'Laboratório 4 (S-309)',
-            'Laboratório 5 (S-310)'
+            'Laboratório 5 (S-310)',
         ], required: true
     },
     createAt: { type: Date, default: Date.now }

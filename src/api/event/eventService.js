@@ -57,7 +57,7 @@ const getAll = (req, res, next) => {
         room = { "$regex": room ? room : '', "$options": "i" }
         find.room = room
     }
-    
+
     if (schedule) {
         const scheduleMin = new Date(`${schedule}T00:00:00.000Z`)
         const scheduleMax = new Date(`${schedule}T23:59:59.999Z`)
@@ -72,7 +72,7 @@ const getAll = (req, res, next) => {
             if (err) {
                 sendErrorsFromDB(res, err)
             } else {
-                return res.send({ status: 'ok', data: obj })
+                return res.send(obj)
             }
         })
 }

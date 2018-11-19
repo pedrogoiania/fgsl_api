@@ -67,7 +67,7 @@ const getAll = (req, res, next) => {
     }
 
     event.find(req.query ? find : {})
-        .sort({ schedule: -1 })
+        .sort({ schedule: 1 })
         .exec((err, obj) => {
             if (err) {
                 sendErrorsFromDB(res, err)

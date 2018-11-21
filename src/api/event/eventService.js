@@ -54,14 +54,12 @@ const getAll = (req, res, next) => {
     let find = {}
 
     if (room) {
-        room = { "$regex": room ? room : '', "$options": "i" }
         find.room = room
     }
 
     if (schedule) {
         const scheduleMin = new Date(`${schedule}T00:00:00.000Z`)
         const scheduleMax = new Date(`${schedule}T23:59:59.999Z`)
-
         schedule = schedule && { $gt: scheduleMin, $lt: scheduleMax }
         find.schedule = schedule
     }

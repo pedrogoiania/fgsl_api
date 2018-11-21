@@ -7,7 +7,7 @@ const event = new mongoose.Schema({
     subject: { type: String, required: true },
     bio: { type: String, required: true },
     speaker: { type: String, required: true },
-    asset: { type: String, default: 'https://fgslassets.pedrogyn.com.br/images/fa176570b51a4f5247553ce812f1a616' },
+    asset: { type: String, default: 'https://fgslassets.pedrogyn.com.br/images/0c43d35e6231658dbebd3f25a3f283cf' },
     schedule: { type: Date, default: Date.now },
     room: {
         type: String, enum: [
